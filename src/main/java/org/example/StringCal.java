@@ -9,7 +9,12 @@ public class StringCal {
         }
 
         int ans = 0;
+        String[] number = str.split(",");
+        int size = number.length;
 
+        for(int i =0; i<size; i++){
+            ans += Integer.valueOf(number[i]);
+        }
        return ans;
     }
 }
