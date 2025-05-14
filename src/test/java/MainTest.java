@@ -6,19 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainTest{
-
+    StringCal cal = new StringCal();
     @Test
     void testEmptyString(){
-        StringCal cal = new StringCal();
-
         assertEquals(cal.stringCalculator(""),0);
     }
 
     @Test
     void testOneNumberString(){
-        StringCal cal = new StringCal();
-
         assertEquals(cal.stringCalculator("1"),1);
+    }
+
+    @Test
+    void tetsAddingTwoNumbers(){
+        assertEquals(cal.stringCalculator("1,2"),3);
     }
 
 
