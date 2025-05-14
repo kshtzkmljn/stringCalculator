@@ -1,4 +1,5 @@
 import org.example.Main;
+import org.example.StringCal;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,9 +9,9 @@ public class MainTest{
 
     @Test
     void testEmptyString(){
-        Main main = new Main();
+        StringCal cal = new StringCal();
 
-        assertEquals(main.stringCalculator(""),0);
+        assertEquals(cal.stringCalculator(""),0);
     }
 
 

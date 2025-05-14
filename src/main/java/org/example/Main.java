@@ -5,8 +5,5 @@ public class Main {
         System.out.println("Hello world!");
     }
 
-    public int stringCalculator(String str){
 
-        return 0;
-    }
 }
