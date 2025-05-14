@@ -14,5 +14,12 @@ public class MainTest{
         assertEquals(cal.stringCalculator(""),0);
     }
 
+    @Test
+    void testOneNumberString(){
+        StringCal cal = new StringCal();
+
+        assertEquals(cal.stringCalculator("1"),1);
+    }
+
 
 }
