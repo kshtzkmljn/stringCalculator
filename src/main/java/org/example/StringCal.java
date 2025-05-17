@@ -9,11 +9,22 @@ public class StringCal {
         }
 
         int ans = 0;
+        String exceptionMsg = "negative numbers not allowed ";
+        boolean negFlag = false;
         String[] number = str.split("[,\n]");
         int size = number.length;
 
         for(int i =0; i<size; i++){
-            ans += Integer.valueOf(number[i]);
+            int no = Integer.valueOf(number[i]);
+            if(no<0) {
+                negFlag = true;
+                exceptionMsg += number[i];
+            }
+            ans += no;
+        }
+
+        if(negFlag){
+            throw new RuntimeException(exceptionMsg);
         }
        return ans;
     }

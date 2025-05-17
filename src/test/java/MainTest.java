@@ -32,6 +32,12 @@ public class MainTest{
         assertTrue(exception.getMessage().contains("-2"));
     }
 
+    @Test
+    void handleDelimiterConfiguration() {
+        assertEquals(cal.stringCalculator("//;/n2:3"),6);
+        assertEquals(cal.stringCalculator("//:/n4:5/n3"),12);
+    }
+
 
 
 
