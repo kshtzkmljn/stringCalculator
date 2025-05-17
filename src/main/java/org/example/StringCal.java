@@ -10,21 +10,34 @@ public class StringCal {
         }else if(str.length() == 1){
             return Integer.valueOf(str);
         }
-        String delimiter = "[,\n]";
+        String delimiterLine = "[,\n]";
         if(str.startsWith("//")){
             int newLineIndex = str.indexOf("\n");
             if(newLineIndex == -1){
                 throw new RuntimeException("Invalid input !!");
             }
-            delimiter = str.substring(2,newLineIndex);
+            delimiterLine = str.substring(2,newLineIndex);
 
-            delimiter = "[,\n]|" + Pattern.quote(delimiter);
+            int j =0;
+            int start = 0;
+            ArrayList<String> delimiters = new ArrayList<>();
+            while(j<delimiterLine.length()){
+                if(delimiterLine.charAt(j) == '['){
+                    start = j;
+
+                    delimiters.add(Pattern.quote(delimiterLine.substring(start+1,delimiterLine.indexOf(']',j))));
+                    j = delimiterLine.indexOf(']',j);
+                }
+                j++;
+            }
+
+            delimiterLine = "[,\n]|" + String.join("|",delimiters);
            str = str.substring(newLineIndex+1);
         }
         int ans = 0;
         ArrayList negative = new ArrayList();
         boolean negFlag = false;
-        String[] number = str.split(delimiter);
+        String[] number = str.split(delimiterLine);
         int size = number.length;
 
         for(int i =0; i<size; i++){

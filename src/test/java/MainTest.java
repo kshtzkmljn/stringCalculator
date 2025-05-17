@@ -49,7 +49,15 @@ public class MainTest{
         assertEquals(cal.stringCalculator("//***\n1***1001***3"),4);
     }
 
+    @Test
+    void handleAnyNoOfDelimiter(){
+        assertEquals(cal.stringCalculator("//[*][#]\n1*1001#3"),4);
+    }
 
+    @Test
+    void handleAnyNoOfDelimiterofAnyLength(){
+        assertEquals(cal.stringCalculator("//[***][##]\n3***1001##6"),9);
+    }
 
 
 }
