@@ -41,12 +41,12 @@ public class MainTest{
 
     @Test
     void handleAnyLengthDelimiter(){
-        assertEquals(cal.stringCalculator("//***\n1***2***3"),6);
+        assertEquals(cal.stringCalculator("//[***]\n1***2***3"),6);
     }
 
     @Test
     void avoidNoMoreThan1000(){
-        assertEquals(cal.stringCalculator("//***\n1***1001***3"),4);
+        assertEquals(cal.stringCalculator("//[***]\n1***1001***3"),4);
     }
 
     @Test

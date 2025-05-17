@@ -30,8 +30,11 @@ public class StringCal {
                 }
                 j++;
             }
-
-            delimiterLine = "[,\n]|" + String.join("|",delimiters);
+            if(delimiters.size()>0) {
+                delimiterLine = "[,\n]|" + String.join("|", delimiters);
+            }else{
+                delimiterLine = "[,\n]|" + Pattern.quote(delimiterLine);
+            }
            str = str.substring(newLineIndex+1);
         }
         int ans = 0;
