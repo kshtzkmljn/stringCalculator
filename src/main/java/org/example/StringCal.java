@@ -9,7 +9,7 @@ public class StringCal {
         }
 
         int ans = 0;
-        String[] number = str.split(",");
+        String[] number = str.split("[,\n]");
         int size = number.length;
 
         for(int i =0; i<size; i++){
