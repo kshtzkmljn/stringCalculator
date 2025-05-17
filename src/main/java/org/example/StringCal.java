@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 public class StringCal {
     public int stringCalculator(String str){
         if(str == "") {
@@ -9,12 +12,17 @@ public class StringCal {
         }
         String delimiter = "[,\n]";
         if(str.startsWith("//")){
-           String[] input =  str.split("/n",2);
-            delimiter = "[,/n]|" + input[0].substring(2,3);
-           str = input[1];
+            int newLineIndex = str.indexOf("\n");
+            if(newLineIndex == -1){
+                throw new RuntimeException("Invalid input !!");
+            }
+            delimiter = str.substring(2,newLineIndex);
+
+            delimiter = "[,\n]|" + Pattern.quote(delimiter);
+           str = str.substring(newLineIndex+1);
         }
         int ans = 0;
-        String exceptionMsg = "negative numbers not allowed ";
+        ArrayList negative = new ArrayList();
         boolean negFlag = false;
         String[] number = str.split(delimiter);
         int size = number.length;
@@ -24,13 +32,15 @@ public class StringCal {
             int no = Integer.valueOf(number[i]);
             if(no<0) {
                 negFlag = true;
-                exceptionMsg += number[i];
+                negative.add(number[i]);
             }
-            ans += no;
+            if(no<=1000) {
+                ans += no;
+            }
         }
 
         if(negFlag){
-            throw new RuntimeException(exceptionMsg);
+            throw new RuntimeException("negative numbers not allowed "+String.join(",",negative));
         }
        return ans;
     }

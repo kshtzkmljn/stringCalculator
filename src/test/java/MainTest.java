@@ -28,14 +28,25 @@ public class MainTest{
 
     @Test
     void handleNegativeNumbersThrowException() {
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> cal.stringCalculator("1\n-2,3") );
-        assertTrue(exception.getMessage().contains("-2"));
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> cal.stringCalculator("1\n-2,-3") );
+        System.out.println(exception.getMessage());
+        assertTrue(exception.getMessage().contains("-2,-3"));
     }
 
     @Test
     void handleDelimiterConfiguration() {
-        assertEquals(cal.stringCalculator("//;/n2;3"),5);
-        assertEquals(cal.stringCalculator("//:/n4:5/n3"),12);
+        assertEquals(cal.stringCalculator("//;\n2;3"),5);
+        assertEquals(cal.stringCalculator("//::\n4::5\n3"),12);
+    }
+
+    @Test
+    void handleAnyLengthDelimiter(){
+        assertEquals(cal.stringCalculator("//***\n1***2***3"),6);
+    }
+
+    @Test
+    void avoidNoMoreThan1000(){
+        assertEquals(cal.stringCalculator("//***\n1***1001***3"),4);
     }
 
 
